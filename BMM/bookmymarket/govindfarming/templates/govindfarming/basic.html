@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block head %} {% endblock %}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" />
+	<title>{% block title %} {% endblock %}</title>
+	<style type="text/css">
+		#header .row{margin-right:-5px;margin-left:-5px}
+		#header .col,#header .col-auto{padding-right:5px;padding-left:5px}
+		#header_top{height:46px}
+		#header_logo_left{float:left}
+		#header_logo_right{display:none}
+		#header_cart{position:relative}
+		#header_cart_qty{position:absolute;top:0;right:12px;font-size:11px;line-height:14px;background:#212529;border-radius:50%;color:#fff;height:14px;width:14px;text-align:center}
+
+		#header_cart a{font-size:1.5rem;text-decoration:none}
+		#header_cart a .badge{color:#fff}
+		#header_bottom a{display:block;line-height:36px}
+		#header_bottom a:hover{text-decoration:none}
+		#header_nav{clear:both}
+		#header .collapsing{position:initial;height:initial;overflow:initial;transition:initial}
+		@media screen and (prefers-reduced-motion:reduce) {
+		#header .collapsing{transition:initial}
+		}
+		@media (min-width: 576px) {
+		#header .row{margin-right:-15px;margin-left:-15px}
+		#header .col,#header .col-auto{padding-right:15px;padding-left:15px}
+		#header_logo_right{float:left;display:block;margin-left:4px}
+		}
+
+		@media (min-width: 992px) {
+		#header_menu_toggler{display:none!important}
+		#header_nav a{display:inline-block;margin-right:20px}
+		#header_nav{clear:none;display:block!important;float:left}
+		}
+		#marquee:hover,.resultsp:hover,.picbox:hover,.button:hover.noticefull:hover,.sidemenu ul li:hover
+			,.sphover:hover{box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);-webkit-transition:background-color .25s,color .15s,box-shadow 			.25s,opacity 0.25s,filter 0.25s,border 0.15s;transition:background-color .25s,color .15s,box-shadow .88s,opacity .25s,filter .25s,border .15s}
+
+		#marquee{ background:#21d192; color: white;padding:6px 0 4px 0;font-family:rokkittbold;margin-left:0px;margin-bottom:0px;}
+
+		.header-social p{
+	display: inline-block;
+	color: #9190a5;
+	font-size: 16px;
+	padding-top: 4px;
+}
+.header-social a{
+	display: -ms-inline-flex;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	width: 32px;
+	height: 32px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	border-radius: 50%;
+	color: #9190a5;
+	font-size: 12px;
+	margin-left: 13px;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.header-social a:hover{
+	background: #21d192;
+}
+.fa_custom {
+color: #ffffff;
+}
+
+
+.fa_liks {
+	color:#000000;
+
+}
+
+{% block css %} {% endblock %}
+
+	</style>
+</head>
+<body>
+
+	<div id="header" class="bg-light border-bottom">
+        <div class="header-social d-flex justify-content-end">
+				<p>Follow us:</p>
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-instagram"></i></a>
+				<a href="#"><i class="fa fa-telegram"></i></a>
+
+			</div>
+		<div class="container">
+			<div id="header_top" class="row align-items-center">
+				<div class="col-auto">
+					<a href="{% url 'GFarmingHome' %}">
+
+						<img id="header_logo_left" alt="" src="/static/logo.png" style="height:50px;width:150px;" />
+					</a>
+				</div>
+				<div id="header_search" class="col">
+					<form action="/search" method="get" role="search">
+						<label for="keywords" class="sr-only">search</label>
+						<div class="input-group">
+							<input id="keywords" name="keywords" type="text" class="form-control" placeholder="search">
+							<span class="input-group-append">
+								<button type="submit" class="btn btn-dark"><span class="oi oi-magnifying-glass" aria-hidden="true"></span></button>
+							</span>
+						</div>
+					</form>
+				</div>
+				<div id="header_cart" class="col-auto">
+					<a href="#" class="text-danger"><span class="oi oi-cart" aria-hidden="true"></span> <span id="header_cart_qty">0</span></a>
+				</div>
+			</div>
+			<nav id="header_bottom" class="clearfix">
+				<a id="header_menu_toggler" class="float-left text-dark" data-toggle="collapse" href="#header_nav">Menu <span class="oi oi-chevron-bottom" aria-hidden="true"></span></a>
+				<a href="{% url 'Lon' %}" class="float-right text-dark"><span class="fa fa-user-circle fa-fw"></span>Login</a>
+				<div id="header_nav" class="collapse">
+					<a href="{% url 'GFarmingHome' %}" class="text-dark">Home</a>
+					<a href="{% url 'Transport' %}" class="text-dark">Transport</a>
+					<a href="{% url 'Cars' %}" class="text-dark">Car Services</a>
+					<a href="{% url 'TractorService' %}" class="text-dark">Tractor Serivces</a>
+
+				</div>
+			</nav>
+		</div>
+        <marquee id="marquee"  onmouseover="this.stop();" onmouseout="this.start();"> 5% Offer apply coupan code GFARMING </marquee>
+
+	</div>
+
+    {% block body %} {% endblock %}
+
+
+
+<!-- Footer -->
+<footer class="page-footer font-small blue-grey lighten-5">
+
+  <div style="background-color: #21d192;">
+    <div class="container">
+
+      <!-- Grid row-->
+      <div class="row py-4 d-flex align-items-center">
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+          <h6 class="mb-0">Get connected with us on social networks!</h6>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-7 text-center text-md-right ">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fa fa-facebook-f fa_custom mr-4 "> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fa fa-twitter fa_custom mr-4"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fa fa-google-plus fa_custom mr-4"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fa fa-linkedin fa_custom mr-4"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fa fa-instagram fa_custom "> </i>
+          </a>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Grid row -->
+    <div class="row mt-3 dark-grey-text">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">Book my market</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p class="text-justify">We serve to all kinds of Fertilizers, Seeds, Agri Machinery & Gardening needs ranging from plants, tools,  seeds, solutions. Our ever-growing platform integrates Farming and customers across India.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Help</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a class="fa_liks" href="#!">Payments</a>
+        </p>
+        <p>
+          <a class="fa_liks" href="#!">Work</a>
+        </p>
+        <p>
+          <a class="fa_liks" href="#!">Cancelletion</a>
+        </p>
+        <p>
+          <a class="fa_liks" href="{% url 'Empindex' %}">FAQ</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a class="fa_liks" href="{% url 'AboutUs' %}">About Us</a>
+        </p>
+        <p>
+          <a class="fa_liks" href="{% url 'ShopHome' %}">Book My Market</a>
+        </p>
+        <p>
+          <a class="fa_liks" href="#!">Carrier</a>
+        </p>
+
+          <p>
+          <a class="fa_liks" href="#!">Terms & Condition</a>
+        </p>
+          <p>
+          <a class="fa_liks" href="#!">Privacy Policy</a>
+        </p>
+          <p>
+          <a class="fa_liks" href="#!">Return Policy</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <i class="fa fa-home mr-3"></i>BIRDPUR SDDN 272206, IND</p>
+        <p>
+          <i class="fa fa-envelope mr-3"></i> care@bookmymarket.com</p>
+        <p>
+          <i class="fa fa-phone mr-3"></i> + 91 9453210230</p>
+
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
+    <a class="dark-grey-text" href="https://bookmymarket.com/"> Bookmymarket.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+{% block javascript %} {% endblock %}
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
+

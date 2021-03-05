@@ -1,0 +1,198 @@
+{% extends '../govindfarming/basic.html' %}
+{% block title %} Tractor's Services {% endblock %}
+
+{% block css %}
+.table-sortable tbody tr {
+    cursor: move;
+}
+.shoping__checkout {
+	background: #f5f5f5;
+	padding: 30px;
+	padding-top: 20px;
+	margin-top: 50px;
+}
+
+.shoping__checkout h5 {
+	color: #1c1c1c;
+	font-weight: 700;
+	font-size: 20px;
+	margin-bottom: 28px;
+}
+
+.shoping__checkout ul {
+	margin-bottom: 28px;
+}
+
+.shoping__checkout ul li {
+	font-size: 16px;
+	color: #1c1c1c;
+	font-weight: 700;
+	list-style: none;
+	overflow: hidden;
+	border-bottom: 1px solid #ebebeb;
+	padding-bottom: 13px;
+	margin-bottom: 18px;
+}
+
+.shoping__checkout ul li:last-child {
+	padding-bottom: 0;
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
+.shoping__checkout ul li span {
+	font-size: 18px;
+	color: #dd2222;
+	float: right;
+}
+
+.shoping__checkout .primary-btn {
+
+display: block;
+	text-align: center;
+    font-size: 14px;
+    padding: 10px 28px 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: #21d192;
+    letter-spacing: 2px;
+}
+
+.shoping__discount {
+	margin-top: 45px;
+}
+
+.shoping__discount h5 {
+	font-size: 20px;
+	color: #1c1c1c;
+	font-weight: 700;
+	margin-bottom: 25px;
+}
+
+.shoping__discount form input {
+	width: 255px;
+	height: 46px;
+	border: 1px solid #cccccc;
+	font-size: 16px;
+	color: #b2b2b2;
+	text-align: center;
+	display: inline-block;
+	margin-right: 15px;
+}
+
+.shoping__discount form input::placeholder {
+	color: #b2b2b2;
+}
+
+.shoping__discount form button {
+	padding: 15px 30px 11px;
+	font-size: 12px;
+	letter-spacing: 4px;
+	background: #6f6f6f;
+}
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <div class="row clearfix">
+    	<div class="col-md-12 table-responsive">
+			<table class="table table-bordered table-hover table-sortable" id="tab_logic">
+				<thead>
+					<tr >
+						<th class="text-center"> # </th>
+						<th class="text-center">
+							Service Name
+						</th>
+
+						<th class="text-center">
+							Quantity
+						</th>
+						<th class="text-center">
+							Unit
+						</th>
+						<th class="text-center">
+							Price/Unit
+						</th>
+						<th class="text-center">
+							Ammount Total
+						</th>
+
+        				<th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+    				<tr id='addr0' data-id="0" class="hidden">
+						<td>1</td>
+						<td data-name="sel">
+						    <select name="sel0">
+        				        <option value="">Select Service</option>
+    					        <option value="1">Rotavetor Cultivation</option>
+        				        <option value="2">Cultivation</option>
+
+						    </select>
+						</td>
+						<td data-name="mail">
+						    <input type="text" name='mail0' placeholder='Quantity' class="form-control"/>
+						</td>
+						<td data-name="sel">
+						    <select name="sel0">
+        				        <option value="">Select Unit</option>
+    					        <option value="1">BHEEGA</option>
+        				        <option value="2">MANDI</option>
+								<option value="2">HOUR</option>
+								<option value="2">MINUTE</option>
+
+						    </select>
+						</td>
+						<td data-name="desc">
+						    <input type="text" name='hf' placeholder='Rate' class="form-control"/>
+
+						</td>
+    					<td data-name="mail">
+						    <input type="text" name='mail0' placeholder='Quantity' class="form-control"/>
+						</td>
+                        <td data-name="del">
+                            <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
+                        </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<a id="add_row" class="btn btn-primary float-right">Add Row</a>
+
+	<div class="row">
+                <div class="col-lg-6">
+                    <div class="shoping__continue">
+                        <div class="shoping__discount">
+                            <h5>Discount Codes</h5>
+                            <form action="#">
+                                <input type="text" placeholder="Enter your coupon code">
+                                <button type="submit" class="site-btn">APPLY COUPON</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__checkout">
+                        <h5>Cart Total</h5>
+                        <ul>
+                            <li>Subtotal <span>&#8377;{total_cart_price:request.session.cart |floatformat:"2"}</span></li>
+
+                            <li>Discount <span>&#8377;0.00</span></li>
+                            <li>Total <span>&#8377;0.00</span></li>
+                        </ul>
+                        <a href="{% url 'Cheout' %}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    </div>
+                </div>
+            </div>
+
+</div>
+
+
+{% endblock %}

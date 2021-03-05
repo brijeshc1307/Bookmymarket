@@ -1,0 +1,313 @@
+{% extends '../shop/basic.html' %}
+{% block title %} Checkout {% endblock %}
+{% block css %}
+
+
+/*---------------------
+  Checkout
+-----------------------*/
+
+.checkout {
+	padding-top: 80px;
+	padding-bottom: 60px;
+}
+
+.checkout h6 {
+	color: #999999;
+	text-align: center;
+	background: #f5f5f5;
+	border-top: 1px solid #6AB963;
+	padding: 12px 0 12px;
+	margin-bottom: 75px;
+}
+
+.checkout h6 span {
+	font-size: 16px;
+	color: #6AB963;
+	margin-right: 5px;
+}
+
+.checkout h6 a {
+	text-decoration: underline;
+	color: #999999;
+}
+
+.checkout__form h4 {
+	color: #1c1c1c;
+	font-weight: 700;
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 20px;
+	margin-bottom: 25px;
+}
+
+.checkout__form p {
+	column-rule: #b2b2b2;
+}
+
+.checkout__input {
+	margin-bottom: 24px;
+}
+
+.checkout__input p {
+	color: #1c1c1c;
+	margin-bottom: 20px;
+}
+
+.checkout__input p span {
+	color: #dd2222;
+}
+
+.checkout__input input {
+	width: 100%;
+	height: 46px;
+	border: 1px solid #ebebeb;
+	padding-left: 20px;
+	font-size: 16px;
+	color: #b2b2b2;
+	border-radius: 4px;
+}
+
+.checkout__input input.checkout__input__add {
+	margin-bottom: 20px;
+}
+
+.checkout__input input::placeholder {
+	color: #b2b2b2;
+}
+
+.checkout__input__checkbox {
+	margin-bottom: 10px;
+}
+
+.checkout__input__checkbox label {
+	position: relative;
+	font-size: 16px;
+	color: #1c1c1c;
+	padding-left: 40px;
+	cursor: pointer;
+}
+
+.checkout__input__checkbox label input {
+	position: absolute;
+	visibility: hidden;
+}
+
+.checkout__input__checkbox label input:checked~.checkmark {
+	background: #7fad39;
+	border-color: #7fad39;
+}
+
+.checkout__input__checkbox label input:checked~.checkmark:after {
+	opacity: 1;
+}
+
+.checkout__input__checkbox label .checkmark {
+	position: absolute;
+	left: 0;
+	top: 4px;
+	height: 16px;
+	width: 14px;
+	border: 1px solid #a6a6a6;
+	content: "";
+	border-radius: 4px;
+}
+
+.checkout__input__checkbox label .checkmark:after {
+	position: absolute;
+	left: 1px;
+	top: 1px;
+	width: 10px;
+	height: 8px;
+	border: solid white;
+	border-width: 3px 3px 0px 0px;
+	-webkit-transform: rotate(127deg);
+	-ms-transform: rotate(127deg);
+	transform: rotate(127deg);
+	content: "";
+	opacity: 0;
+}
+
+.checkout__order {
+	background: #f5f5f5;
+	padding: 40px;
+	padding-top: 30px;
+}
+
+.checkout__order h4 {
+	color: #1c1c1c;
+	font-weight: 700;
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.checkout__order .checkout__order__products {
+	font-size: 18px;
+	color: #1c1c1c;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.checkout__order .checkout__order__products span {
+	float: right;
+}
+
+.checkout__order ul {
+	margin-bottom: 12px;
+}
+
+.checkout__order ul li {
+	font-size: 16px;
+	color: #6f6f6f;
+	line-height: 40px;
+	list-style: none;
+}
+
+.checkout__order ul li span {
+	font-weight: 700;
+	float: right;
+}
+
+.checkout__order .checkout__order__subtotal {
+	font-size: 18px;
+	color: #1c1c1c;
+	font-weight: 700;
+	border-bottom: 1px solid #e1e1e1;
+	border-top: 1px solid #e1e1e1;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	padding-top: 15px;
+}
+
+.checkout__order .checkout__order__subtotal span {
+	float: right;
+}
+
+.checkout__order .checkout__input__radio label {
+	padding-left: 20px;
+}
+
+.checkout__order .checkout__order__total {
+	font-size: 18px;
+	color: #1c1c1c;
+	font-weight: 700;
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 15px;
+	margin-bottom: 25px;
+}
+
+.checkout__order .checkout__order__total span {
+	float: right;
+	color: #dd2222;
+}
+
+.checkout__order button {
+	font-size: 18px;
+	letter-spacing: 2px;
+	width: 100%;
+	margin-top: 10px;
+}
+
+
+{% endblock %}
+{% block body %}
+
+<!-- Checkout Section Begin -->
+    <section class="checkout spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h6><span class="icon_tag_alt"></span>
+                    </h6>
+                </div>
+            </div>
+            <div class="checkout__form">
+                <h4>Billing Details</h4>
+                <form action="{% url 'Cheout' %}" method="POST">
+					{% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Fist Name<span>*</span></p>
+                                        <input type="text" name="customer_fname">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Last Name<span>*</span></p>
+                                        <input type="text" name="customer_lname">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Country<span>*</span></p>
+                                <input type="text" name="billing_country">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Address<span>*</span></p>
+                                <input type="text" placeholder="Street Address" class="checkout__input__add" name="street">
+                                <input type="text" placeholder="Apartment, suite, unite ect (optinal)" name="apartment">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Town/City<span>*</span></p>
+                                <input type="text" name="city">
+                            </div>
+                            <div class="checkout__input">
+                                <p>State<span>*</span></p>
+                                <input type="text" name="state">
+                            </div>
+                            <div class="checkout__input">
+                                <p>Postcode / ZIP<span>*</span></p>
+                                <input type="text" name="postcode">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="checkout__input">
+                                        <p>Phone<span>*</span></p>
+                                        <input type="text" name="phone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout__input">
+                                <p>Order notes<span>*</span></p>
+                                <input type="text"
+                                    placeholder="Notes about your order, e.g. special notes for delivery." name="notes">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="checkout__order">
+                                <h4>Your Order</h4>
+                                <div class="checkout__order__products">Products <span>Total</span></div>
+                                <ul>{% for i in product %}
+                                    <li>{{i.product_name}} <span>&#8377;0.00</span></li>
+                                   {% endfor %}
+                                </ul>
+                                <div class="checkout__order__subtotal">Subtotal <span>&#8377;0.00</span></div>
+                                <div class="checkout__order__total">Total <span>&#8377;0.00</span></div>
+                                <div class="radio">
+                              <label><input type="radio" name="optradio" > Cash On Dilevery</label>
+
+                            </div>
+                                <div class="radio">
+                              <label><input type="radio" name="optradio"> Debit Card/Credit Card</label>
+                            </div>
+                                <div class="radio">
+                              <label><input type="radio" name="optradio"> Net Banking</label>
+
+                            </div>
+                                <div class="radio">
+                              <label><input type="radio" name="optradio"> UPI</label>
+
+                            </div>
+                                    <button type="submit" class="site-btn"> PLACE ORDER</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Checkout Section End -->
+{% endblock %}

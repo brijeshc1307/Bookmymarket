@@ -1,0 +1,166 @@
+{% extends '../shop/basic.html' %}
+{% block head %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+{% endblock %}
+    {% block title %} Home {% endblock %}
+{% block css %}
+.product-grid4,.product-grid4 .product-image4{position:relative}
+.product-grid4{font-family:Poppins,sans-serif;text-align:center;box-shadow:0 0 10px rgba(0,0,0,.2);overflow:hidden;z-index:1;transition:all .3s ease 0s}
+.product-grid4 .product-image4 a{display:block}
+.product-grid4 .product-image4 img{width:250;height:250}
+.product-grid4 .pic-1{opacity:1;transition:all .5s ease-out 0s}
+.product-grid4 .product-discount-label,.product-grid4 .product-new-label{color:#fff;background-color:#ef5777;font-size:12px;text-transform:uppercase;padding:2px 7px;display:block;position:absolute;top:10px;left:0}
+.product-grid4 .product-discount-label{background-color:#333;left:auto;right:0}
+.product-grid4 .product-content{padding:25px}
+.product-grid4 .title{font-size:15px;font-weight:400;text-transform:capitalize;margin:0 0 7px;transition:all .3s ease 0s}
+.product-grid4 .title a{color:#222}
+.product-grid4 .title a:hover{color:#16a085}
+.product-grid4 .rating{color:#FFD200;font-size:12px;padding:12px 0 0;margin:0;list-style:none;position:relative;z-index:-1}
+.product-grid4 .rating li.disable{color:rgba(0,0,0,.2)}
+.product-grid4 .price{color:#16a085;font-size:17px;font-weight:700;margin:0 2px 15px 0;display:block}
+.product-grid4 .price span{color:#909090;font-size:13px;font-weight:400;letter-spacing:0;text-decoration:line-through;text-align:left;vertical-align:middle;display:inline-block}
+.product-grid4 .add-to-cart{border:1px solid #e5e5e5;background-color:#505050;display:inline-block;padding:5px 10px;color:#fff;font-weight:600;font-size:14px;border-radius:4px;transition:all .3s}
+.product-grid4 .add-to-cart:hover{background-color:#21d192;box-shadow:0 0 10px rgba(0,0,0,.5)}
+@media only screen and (max-width:990px){.product-grid4{margin-bottom:30px}
+}
+
+
+{% endblock %}
+{% block body %}
+{% load cart %}
+
+
+<div class="container-fluid">
+  <!--Carousel Wrapper-->
+    <div id="banneride1" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+      <!--Indicators-->
+      <ul class="carousel-indicators">
+        <li data-target="#banneride1" data-slide-to="0" class="active"></li>
+        <li data-target="#banneride1" data-slide-to="1"></li>
+        <li data-target="#banneride1" data-slide-to="2"></li>
+      </ul>
+      <!--/.Indicators-->
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+          <div class="view">
+            <img class="d-block w-100" src="/static/ban1.jpg" height="330px" alt="First slide">
+            <div class="mask rgba-black-light"></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive">Bookmymarket</h3>
+            <p>Get upto 30% OFF On Agri machinery</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <!--Mask color-->
+          <div class="view">
+            <img class="d-block w-100 imb" src="/static/ban2.jpg" height="330px" alt="Second slide">
+            <div class="mask rgba-black-strong"></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive">Bookmymarket</h3>
+            <p>Get up to 40% OFF on Fertilizers</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <!--Mask color-->
+          <div class="view">
+            <img class="d-block w-100 imb" src="/static/ban1.jpg" height="330px" alt="Third slide">
+            <div class="mask rgba-black-slight"></div>
+          </div>
+          <div class="carousel-caption">
+            <h3 class="h3-responsive">Bookmymarket</h3>
+            <p>Get upto 30% OFF On Agri machinery</p>
+          </div>
+        </div>
+      </div>
+      <!--/.Slides-->
+      <!--Controls-->
+      <a class="carousel-control-prev" href="#banneride1" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#banneride1" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <!--/.Controls-->
+    </div>
+    <!--/.Carousel Wrapper-->
+</div>
+
+
+
+<div class="container">
+
+    {% for product, range, nSlides in allProds %}
+    <h3 class="h3">Flash Sale On: {{product.0.category}} </h3>
+    <div class="row">
+        <div id="idp{{forloop.counter}}" class="col carousel slide my-3" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#idp{{forloop.counter}}" data-slide-to="0" class="active"></li>
+                {% for i in range %}
+                <li data-target="#idp{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+                {% endfor %}
+            </ol>
+            <div class="container carousel-inner no-padding">
+
+            <div class="carousel-item active">
+                {% for i in product %}
+                <div class="col-md-3 col-sm-3" id="{{i.id}}">
+                    <div class="product-grid4">
+                        <div class="product-image4">
+                            <a href="{% url 'Productdetail' %}">
+                                <img class="pic-1" src='/media/{{i.image}}'>
+                            </a>
+                            <span class="product-new-label">SALE</span>
+                            <span class="product-discount-label">-{{i.discount_price}}%</span>
+                        </div>
+                        <ul class="rating">
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                            <li class="fa fa-star"></li>
+                        </ul>
+                        <div class="product-content">
+                            <h3 class="title"><a href="#">{{i.product_name}}</a></h3>
+                            <div class="price">
+                                &#8377;{{i.price}}
+                                <span>&#8377;{{i.price | selling_price:i.discount_price |floatformat:"2"}}</span>
+                            </div>
+                            <form action="{% url 'ShopHome' %}" method="POST">
+                                    {% csrf_token %}
+                                <input hidden type="text" name="product" value="{{i.id}}">
+                                {% if i|is_in_cart:request.session.cart %}
+                                <a class="add-to-cart" href="{% url 'Checkout' %}">Go To Cart</a>
+                                {% else %}
+                                <button type="submit" id="pr{{i.id}}" class="add-to-cart">Add To Cart</button>
+                                {% endif %}
+                                <a class="add-to-cart" href="{% url 'Cheout' %}">Buy Now</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+            </div>
+
+                <div class="carousel-item">
+                        {% endif%}
+
+                        {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<hr>
+{% endblock %}

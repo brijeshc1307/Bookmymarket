@@ -1,0 +1,173 @@
+{% extends '../govindfarming/basic.html' %}
+{% block title %} Signup {% endblock %}
+{% block css %}
+.container{
+height: 100%;
+align-content: center;
+}
+
+.card{
+height: 600px;
+margin-top: auto;
+margin-bottom: auto;
+width: 440px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #21d192;
+}
+
+.social_icon span:hover{
+color: white;
+cursor: pointer;
+}
+
+.card-header h3{
+color: white;
+}
+
+.social_icon{
+position: absolute;
+right: 20px;
+top: -45px;
+}
+
+.input-group-prepend span{
+width: 50px;
+background-color: #21d192;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #ffffff;
+width: 200px;
+}
+.logi{
+color: black;
+background-color: #ffffff;
+}
+
+.login_btn:hover{
+color: black;
+background-color: #21d192;
+}
+
+.links{
+color: white;
+}
+
+.links a{
+margin-left: 4px;
+}
+
+
+{% endblock %}
+{% block body %}
+
+</br>
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Create Your Account</h3>
+			</div>
+			<div class="card-body">
+				<form>
+
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+						 </div>
+						<input name="" class="form-control" placeholder="Full name" type="text">
+					</div> <!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+						 </div>
+						<input name="" class="form-control" placeholder="Email address" type="email">
+					</div> <!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+						</div>
+						<select class="custom-select" style="max-width: 120px;">
+							<option selected="">+91</option>
+							<option value="1">+977</option>
+						</select>
+						<input name="" class="form-control" placeholder="Phone number" type="text">
+					</div> <!-- form-group// -->
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+						</div>
+						<select class="custom-select" style="max-width: 120px;">
+							<option selected="">Male</option>
+							<option value="1">Female</option>
+						</select>
+						&nbsp;
+						<div class="input-group-prepend">
+							<span class="input-group-text">DOB</span>
+						</div>
+						<input class="form-control" type="date" id="birthday" name="birthday">
+					</div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+						</div>
+						<select class="form-control">
+							<option selected=""> Select designation</option>
+							<option>Employee</option>
+							<option>User</option>
+						</select>
+					</div>
+
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+						</div>
+						<input class="form-control" placeholder="Create password" type="password">
+					</div>
+					<div class="form-group input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+						</div>
+						<input class="form-control" placeholder="Repeat password" type="password">
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Create Account" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Have an account?&nbsp;<a href="{% url 'Lon' %}">Login</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</br>
+{% endblock %}

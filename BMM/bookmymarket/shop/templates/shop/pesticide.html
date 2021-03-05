@@ -1,0 +1,276 @@
+{% extends '../shop/basic.html' %}
+{% block head %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+{% endblock %}
+    {% block title %} Pesticide {% endblock %}
+{% block css %}
+.product-grid4,.product-grid4 .product-image4{position:relative}
+.product-grid4{font-family:Poppins,sans-serif;text-align:center;box-shadow:0 0 10px rgba(0,0,0,.2);overflow:hidden;z-index:1;transition:all .3s ease 0s}
+.product-grid4 .product-image4 a{display:block}
+.product-grid4 .product-image4 img{width:250;height:250}
+.product-grid4 .pic-1{opacity:1;transition:all .5s ease-out 0s}
+.product-grid4 .product-discount-label,.product-grid4 .product-new-label{color:#fff;background-color:#ef5777;font-size:12px;text-transform:uppercase;padding:2px 7px;display:block;position:absolute;top:10px;left:0}
+.product-grid4 .product-discount-label{background-color:#333;left:auto;right:0}
+.product-grid4 .product-content{padding:25px}
+.product-grid4 .title{font-size:15px;font-weight:400;text-transform:capitalize;margin:0 0 7px;transition:all .3s ease 0s}
+.product-grid4 .title a{color:#222}
+.product-grid4 .title a:hover{color:#16a085}
+.product-grid4 .rating{color:#FFD200;font-size:12px;padding:12px 0 0;margin:0;list-style:none;position:relative;z-index:-1}
+.product-grid4 .rating li.disable{color:rgba(0,0,0,.2)}
+.product-grid4 .price{color:#16a085;font-size:17px;font-weight:700;margin:0 2px 15px 0;display:block}
+.product-grid4 .price span{color:#909090;font-size:13px;font-weight:400;letter-spacing:0;text-decoration:line-through;text-align:left;vertical-align:middle;display:inline-block}
+.product-grid4 .add-to-cart{border:1px solid #e5e5e5;background-color:#505050;display:inline-block;padding:5px 10px;color:#fff;font-weight:600;font-size:14px;border-radius:4px;transition:all .3s}
+.product-grid4 .add-to-cart:hover{background-color:#21d192;box-shadow:0 0 10px rgba(0,0,0,.5)}
+@media only screen and (max-width:990px){.product-grid4{margin-bottom:30px}
+}
+.sidebar__item {
+	margin-bottom: 35px;
+}
+
+.sidebar__item.sidebar__item__color--option {
+	overflow: hidden;
+}
+
+.sidebar__item h4 {
+	color: #1c1c1c;
+	font-weight: 700;
+	margin-bottom: 25px;
+}
+
+.sidebar__item ul li {
+	list-style: none;
+}
+
+
+
+.product__pagination,
+.blog__pagination {
+	padding-top: 10px;
+}
+
+.product__pagination a,
+.blog__pagination a {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border: 1px solid #b2b2b2;
+	font-size: 14px;
+	color: #b2b2b2;
+	font-weight: 700;
+	line-height: 28px;
+	text-align: center;
+	margin-right: 16px;
+	-webkit-transition: all, 0.3s;
+	-moz-transition: all, 0.3s;
+	-ms-transition: all, 0.3s;
+	-o-transition: all, 0.3s;
+	transition: all, 0.3s;
+}
+
+.product__pagination a:hover,
+.blog__pagination a:hover {
+	background: #21d192;
+	border-color: #7fad39;
+	color: #ffffff;
+}
+
+.product__pagination a:last-child,
+.blog__pagination a:last-child {
+	margin-right: 0;
+}
+
+
+.price-range-wrap .range-slider {
+	margin-top: 20px;
+}
+
+.price-range-wrap .range-slider .price-input {
+	position: relative;
+}
+
+.price-range-wrap .range-slider .price-input:after {
+	position: absolute;
+	left: 38px;
+	top: 13px;
+	height: 1px;
+	width: 5px;
+	background: #dd2222;
+	content: "";
+}
+
+.price-range-wrap .range-slider .price-input input {
+	font-size: 16px;
+	color: #dd2222;
+	font-weight: 700;
+	max-width: 20%;
+	border: none;
+	display: inline-block;
+}
+
+.price-range-wrap .price-range {
+	border-radius: 0;
+}
+
+.price-range-wrap .price-range.ui-widget-content {
+	border: none;
+	background: #ebebeb;
+	height: 5px;
+}
+
+.price-range-wrap .price-range.ui-widget-content .ui-slider-handle {
+	height: 13px;
+	width: 13px;
+	border-radius: 50%;
+	background: #ffffff;
+	border: none;
+	-webkit-box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
+	outline: none;
+	cursor: pointer;
+}
+
+.price-range-wrap .price-range .ui-slider-range {
+	background: #dd2222;
+	border-radius: 0;
+}
+
+.price-range-wrap .price-range .ui-slider-range.ui-corner-all.ui-widget-header:last-child {
+	background: #dd2222;
+}
+
+{% endblock %}
+{% block body %}
+{% load cart %}
+</br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 mx-auto">
+        <div class="sidebar__item">
+            <h4>Price</h4>
+                            <div class="price-range-wrap">
+                                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
+                                    data-min="10" data-max="540">
+                                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
+                                </div>
+                                <div class="range-slider">
+                                    <div class="price-input">
+                                        <input type="text" id="minamount">
+                                        <input type="text" id="maxamount">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            <div class="sidebar__item">
+                <h4>Brand</h4>
+              <div class="checkbox">
+                  <label><input type="checkbox" value=""> A</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value=""> B</label>
+                </div>
+                <div class="checkbox">
+                  <label><input type="checkbox" value=""> C</label>
+                </div>
+                </div>
+            </div>
+
+<div class="col-lg-9 mx-auto">
+
+    <h3 class="h3">PESTICIDE </h3>
+    {% for product, range, nSlides in allProds %}
+    <div class="row">
+        {% for i in product %}
+        <div class="col-md-4 col-sm-6" id="i.id">
+            <div class="product-grid4">
+                <div class="product-image4">
+                    <a href="{% url 'Productdetail' %}">
+                        <img class="pic-1" src='/media/{{i.image}}'>
+                    </a>
+                    <span class="product-new-label">SALE</span>
+                    <span class="product-discount-label">- {{i.discount_price}}%</span>
+                </div>
+                <ul class="rating">
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                    <li class="fa fa-star"></li>
+                </ul>
+                <div class="product-content">
+                    <h3 class="title"><a href="#">{{i.product_name}}</a></h3>
+                    <div class="price">
+                        &#8377;{{i.price}}
+                        <span>&#8377;{{i.price | selling_price:i.discount_price |floatformat:"2"}}</span>
+                    </div>
+                    <form action="{% url 'Pesticides' %}" method="POST">
+                            {% csrf_token %}
+
+                        <input hidden type="text" name="product" value="{{i.id}}">
+                        {% if i|is_in_cart:request.session.cart %}
+                        <a class="add-to-cart" href="{% url 'Checkout' %}">Go To Cart</a>
+                        {% else %}
+                        <button type="submit" class="add-to-cart">Add To Cart</button>
+                        {% endif %}
+                        <a class="add-to-cart" href="{% url 'Cheout' %}">Buy Now</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    </br>
+    {% endfor %}
+    <div class="product__pagination">
+                        <a href="#"><i class="fa fa-long-arrow-left"></i></a>
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#"><i class="fa fa-long-arrow-right"></i></a>
+                    </div>
+    </div>
+</div>
+
+    </div>
+</br>
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        /*-----------------------
+		Price Range Slider
+	------------------------ */
+    var rangeSlider = $(".price-range"),
+        minamount = $("#minamount"),
+        maxamount = $("#maxamount"),
+        minPrice = rangeSlider.data('min'),
+        maxPrice = rangeSlider.data('max');
+    rangeSlider.slider({
+        range: true,
+        min: minPrice,
+        max: maxPrice,
+        values: [minPrice, maxPrice],
+        slide: function (event, ui) {
+            minamount.val('$' + ui.values[0]);
+            maxamount.val('$' + ui.values[1]);
+        }
+    });
+    minamount.val('$' + rangeSlider.slider("values", 0));
+    maxamount.val('$' + rangeSlider.slider("values", 1));
+
+    /*--------------------------
+        Select
+    ----------------------------*/
+    $("select").niceSelect();
+
+    </script>
+{% endblock %}
